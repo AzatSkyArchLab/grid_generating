@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор сетки</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <!-- Leaflet Draw CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+    <!-- Свои стили -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Генератор сетки</h1>
+        </header>
+
+        <div class="controls">
+            <div class="form-group">
+                <label for="cell-width">Ширина ячейки (м):</label>
+                <input type="number" id="cell-width" value="141" min="1" step="1">
+            </div>
+            <div class="form-group">
+                <label for="cell-height">Высота ячейки (м):</label>
+                <input type="number" id="cell-height" value="180" min="1" step="1">
+            </div>
+            <button id="clear-map" class="btn">Очистить карту</button>
+        </div>
+
+        <!-- Информационный блок -->
+        <div class="advanced-controls">
+            <div class="form-group">
+                <label for="projection-type">Проекция:</label>
+                <select id="projection-type">
+                    <option value="auto">Автоматический выбор (UTM)</option>
+                    <option value="utm">UTM (точные размеры)</option>
+                    <option value="web_mercator">Web Mercator</option>
+                    <option value="lcc">Lambert Conformal Conic</option>
+                    <option value="none">Без проекции</option>
+                </select>
+            </div>
+            <div class="info-box">
+                <div id="grid-info"></div>
+            </div>
+        </div>
+
+        <div id="map-container">
+            <div id="map"></div>
+        </div>
+
+        <div class="instructions">
+            <h3>Описание:</h3>
+            <ol>
+                <li>Тестирование оптимальной сетки и её объединения</li>
+            </ol>
+        </div>
+
+        <div id="status"></div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- Leaflet Draw JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <!-- Свой JS -->
+    <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+</body>
+</html>
